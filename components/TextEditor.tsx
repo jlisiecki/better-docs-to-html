@@ -9,6 +9,10 @@ export default function TextEditor() {
     if (typeof window === "undefined") return html;
     const doc = new DOMParser().parseFromString(html, "text/html");
 
+    doc.querySelectorAll("span[style*=bold]").forEach((el) => {
+      el.innerHTML = `<b>${el.innerHTML}</b>`;
+    });
+
     doc.querySelectorAll("*").forEach((el) => {
       el.removeAttribute("style");
       el.removeAttribute("dir");
