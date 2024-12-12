@@ -6,6 +6,7 @@ export default function TextEditor() {
   const [html, setHtml] = useState("my <b>HTML</b>");
 
   const cleanHtml = useMemo(() => {
+    if (typeof window === "undefined") return html;
     const doc = new DOMParser().parseFromString(html, "text/html");
 
     doc.querySelectorAll("*").forEach((el) => {
