@@ -37,6 +37,7 @@ export default function TextEditor() {
 
     return doc.body.innerHTML
       .replace(/<\/?span([.\r\n]*)>/gi, "")
+      .replace(/<\/p><br\/?><p([\s>])/, "</p><p$1")
       .replace(/<br\/?>$/, "");
   }, [html]);
 
